@@ -7,7 +7,7 @@ Some of modularities design principles are
 
 <table>
   <tr>
-    <th>modularity</th
+    <th>modularity</th>
     <td>Web pages are broken up into functionally distinct sections. Each section is represented
       by a JavaScript object (module) that encapsulates the DOM nodes, event handlers, 
       helper methods, and data related to that section. 
