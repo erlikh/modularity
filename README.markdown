@@ -1,9 +1,9 @@
-Widgetry is a lightweight object-oriented JavaScript framework 
+Modularity is a lightweight object-oriented JavaScript framework 
 that allows to compose functionally rich web pages 
 in a clean and testable manner out of cleanly separated and reusable components. 
 It is built on top of jQuery and allows to compress the code using 
 Google's closure compiler in advanced mode. 
-It can be combined with any backend technology (Ruby on Rails, PHP, Java, .NET etc).
+It can be combined with any backend technology (Ruby on Rails, Node.js, PHP, Java, .NET etc).
 
 If you want to write complex web pages using jQuery, compress the result with the most advanced JS compiler for 
 the most effective compression, and keep your sanity coding
