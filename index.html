@@ -18,13 +18,15 @@
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
     h2 { font-size: 1.5em; color: #339966; }
-    h3 { text-align: center; color: #339966; }
+    h3 { margin: 2ex 0 0; font-size: 2ex; }
     a { color: #339966; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+    th { vertical-align: top; padding-right: 1ex;}
+    td { padding-bottom: 1em; }
   </style>
 </head>
 
@@ -62,6 +64,74 @@
       <pre>$ git clone git://github.com/kevgo/modularity</pre>
     </p>
 
+    <h2>Philosophy and Design Principles</h2>
+    
+    <table>
+      <tr>
+        <th>Modularity</th>
+        <td>
+          Web pages are broken up into functionally and spatially distinct sections. 
+          Each section is managed by a JavaScript object (module) that encapsulates the 
+          data, DOM nodes, event handlers, and helper methods for that section. 
+          Modules provide high-level APIs and interact with each other through events.
+          <a href="http://kevgo.github.com/modularity/modules">more...</a>
+        </td>
+      </tr>
+      <tr>
+        <th>Testability</th>
+        <td>
+          Because widgets cleanly represent code as dedicated methods, they can be tested in isolation, 
+          for example using the powerful <a href="http://pivotal.github.com/jasmine">Jasmine testing framework</a>.
+          DOM interactions can be tested by providing a simulated module container in the test fixtures.
+          <a href="http://kevgo.github.com/modularity/testing">more...</a>
+        </td>
+      </tr>
+      <tr>
+        <th>Interoperability</th>
+        <td>
+          The JavaScript based on Modularity stands on it's own and can be combined with any other 
+          JavaScript library and backend technology like Ruby on Rails, Node.js, PHP, Java, .NET etc.
+        </td>
+      </tr>
+      <tr>
+        <th>Reusability</th>
+        <td>
+          Modularity allows to break down 
+          By composing complex functionality out of a number of simpler, generic modules,
+        </td>
+      </tr>
+      <tr>
+        <th>General Purpose</th>
+        <td>
+          Modularity doesn't aim to facilitate a particular type of functionality through magic. 
+          It provides a general-purpose foundation for solid hand-written JavaScript code.
+        </td>
+      </tr>
+      <tr>
+        <th>Pragmatism</th>
+        <td>
+          Modularity combines useful patterns from Google's Closure Library with the popular 
+          jQuery ecosystem and Google's sophisticated Closure compiler.
+        </td>
+      </tr>
+    </table>
+
+    <h2>Modules</h2>
+    A module manages all the client-side aspects of a dedicated part of a web page: 
+    DOM elements, data, events, helper methods. 
+    
+    <table>
+      <tr>
+        <td>
+          
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
     </div>
