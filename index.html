@@ -25,11 +25,17 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
-    th { vertical-align: top; padding-right: 1ex;}
-    td { padding-bottom: 1em; }
+    .philosophy th { vertical-align: top; padding-right: 1ex;}
+    .philosophy td { padding-bottom: 1em; }
+    .code_sample div { background: #000; color: #fff; padding: 1ex; font-family: monospace; white-space:pre }
+    .hoverable:hover { background: rgb(67, 47, 0) }
   </style>
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.tooltip.pack.js"></script>
+  <script type="text/javascript" src="https://raw.github.com/kevgo/modularity/master/javascripts/modularity.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </head>
-
 <body>
   <a href="http://github.com/kevgo/modularity"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
@@ -66,7 +72,7 @@
 
     <h2>Philosophy and Design Principles</h2>
     
-    <table>
+    <table class="philosophy">
       <tr>
         <th>Modularity</th>
         <td>
@@ -116,22 +122,75 @@
       </tr>
     </table>
 
-    <h2>Modules</h2>
+    <h2>Example</h2>
     A module manages all the client-side aspects of a dedicated part of a web page: 
     DOM elements, data, events, helper methods. 
-    
-    <table>
-      <tr>
-        <td>
-          
-    
-    
-    
-    
-    
-    
-    
-    
+    Modules have a container. The container is the DOM element which cotains all the elements 
+    of the module.
+
+    <div class="code_sample">
+      <div class="hoverable" title="Define this JS object for the Closure Compiler">goog.provide('click_counter');</div>
+      <div class="hoverable" title="the JavaScript objects that this module depends on">goog.require('root');</div>
+      <div class="hoverable" title="Constructor of the module. Notice that the JsDoc describes the purpose of this module as well as the parameters. See http:// for details.">
+/**
+ * Displays how often the button got clicked.
+ *
+ * @param {jQueryObject} container The container element 
+ * for the click counter section of the page. This div is 
+ * expected to contain a DOM element with the class 'counter' 
+ * to be used as the display for the count and a DOM element with
+ * the class 'button' which is listened to for clicks.
+ * @constructor
+ */
+var ClickCounter = function(container) {</div>
+      <div class="hoverable" title="This line makes this class a widget class.">
+  // Make this object a module.
+  modularity.widgetize(this, container);</div>
+      <div class="hoverable" title="Stores the DOM element of the button in an instance variable. This allows to access it comfortably and performantly using a proper name.">
+  /**
+   * The display element for the number of clicks.
+   * @type jQueryObject
+   */
+  this.display = container.find('.display');
+      </div>
+      <div class="hoverable" title="Attaching an event handler to an DOM element.">
+  // Listen to clicks on the button.
+  container.find('.button').click(this.callback(this.button_clicked));</div>
+      <div class="hoverable" title="Defines an data instance variable.">
+  /**
+   * How many times has the button been clicked already?
+   * @type {number}
+   */
+  this.current_clicks = 0;
+      </div>
+      <div>};</div>
+      <div class="hoverable" title="An event handler. Because the value of 'this' was bound using 'this.callback()', it can access properties of this module instance.">
+/**
+ * Called when the button element is clicked.
+ */
+ClickCounter.prototype.button_clicked = function() {
+
+  // Count this click.
+  this.current_clicks++;
+
+  // Update the display.
+  this.display.html(ClickCounter.display_html(this.current_clicks));
+};
+      </div>
+      <div class="hoverable" title="A helper method for massaging data. Good candidate for unit testing.">
+/**
+ * Updates the display element with the current click count.
+ * @param {number} count The number of times the button has been clicked.
+ */
+ClickCounter.display_html = function(count) {
+  if (count === 0) {
+    return "Please click on the button!";
+  } elseif (count === 1) {
+    return "Please click again";
+  } else {
+    return "You clicked this button "+this.current_clicks+" times.";
+};    
+    </div>
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
     </div>
