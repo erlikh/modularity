@@ -108,10 +108,14 @@
     </div>
     <p>
     Each module has a container. The container is the DOM element which contains all the elements 
-    of the module. The container is provided to the module when it is constructed. Identifying or creating the inner structure of the
-    container is responsibility of the module itself. </p>
+    of the module. The container is provided to the module when it is constructed. 
+    The module then is responsible to identifying any existing inner DOM-structure in the container, or 
+    to create this structure itself. </p>
     <p>On the right is an example module. It contains a button and a div with the class "display".
     The module's function is to simply show the number of times the button was clicked on the display element.<p>
+    <p>To create an instance of the module, all you have to do is <pre>
+new ClickCounter($('.click_counter_container'));
+</pre>
     <p>Below is the source code of this module. Corresponding colors are highlighted. 
       Please hover over sections of the source code to see details about it.</p>
 
