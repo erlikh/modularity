@@ -27,7 +27,7 @@
     .footer { text-align:center; padding-top:30px; font-style: italic; }
     .philosophy th { vertical-align: top; padding-right: 1ex;}
     .philosophy td { padding-bottom: 1em; }
-    .code_sample div { background: #000; color: #fff; padding: 1ex; font-family: monospace; white-space:pre }
+    .code_sample div { background: #000; color: #fff; padding: 2ex; font-family: monospace; white-space:pre }
     .hoverable:hover { background: rgb(67, 47, 0) }
   </style>
   <link rel="stylesheet" href="index.css" type="text/css">
@@ -74,13 +74,34 @@
     
     <table class="philosophy">
       <tr>
+        <th>General Purpose</th>
+        <td>
+          Modularity doesn't aim to facilitate a particular functionality through magic. 
+          It provides a general-purpose foundation for solid hand-written JavaScript code.
+        </td>
+      </tr>
+      <tr>
+        <th>Pragmatism</th>
+        <td>
+          Modularity combines simplified patterns from Google's Closure Library 
+          and the sophisticated Closure compiler
+          with the popular jQuery ecosystem.
+        </td>
+      </tr>
+      <tr>
         <th>Modularity</th>
         <td>
           Web pages are broken up into functionally and spatially distinct sections. 
           Each section is managed by a JavaScript object (module) that encapsulates the 
           data, DOM nodes, event handlers, and helper methods for that section. 
           Modules provide high-level APIs and interact with each other through events.
-          <a href="http://kevgo.github.com/modularity/modules">more...</a>
+        </td>
+      </tr>
+      <tr>
+        <th>Reusability</th>
+        <td>
+          Modularity allows to break down complex functionality into generic modules, 
+          which if coded cleanly can be reused in a several contexts.
         </td>
       </tr>
       <tr>
@@ -89,7 +110,6 @@
           Because widgets cleanly represent code as dedicated methods, they can be tested in isolation, 
           for example using the powerful <a href="http://pivotal.github.com/jasmine">Jasmine testing framework</a>.
           DOM interactions can be tested by providing a simulated module container in the test fixtures.
-          <a href="http://kevgo.github.com/modularity/testing">more...</a>
         </td>
       </tr>
       <tr>
@@ -99,39 +119,20 @@
           JavaScript library and backend technology like Ruby on Rails, Node.js, PHP, Java, .NET etc.
         </td>
       </tr>
-      <tr>
-        <th>Reusability</th>
-        <td>
-          Modularity allows to break down 
-          By composing complex functionality out of a number of simpler, generic modules,
-        </td>
-      </tr>
-      <tr>
-        <th>General Purpose</th>
-        <td>
-          Modularity doesn't aim to facilitate a particular type of functionality through magic. 
-          It provides a general-purpose foundation for solid hand-written JavaScript code.
-        </td>
-      </tr>
-      <tr>
-        <th>Pragmatism</th>
-        <td>
-          Modularity combines useful patterns from Google's Closure Library with the popular 
-          jQuery ecosystem and Google's sophisticated Closure compiler.
-        </td>
-      </tr>
     </table>
 
     <h2>Example</h2>
-    A module manages all the client-side aspects of a dedicated part of a web page: 
+    <p>A module manages all the client-side aspects of a dedicated part of a web page: 
     DOM elements, data, events, helper methods. 
-    Modules have a container. The container is the DOM element which cotains all the elements 
+    Modules have a container. The container is the DOM element which contains all the elements 
     of the module.
+    </p>
+    <p>Please hover over sections of the source code to see details about it.</p>
 
     <div class="code_sample">
-      <div class="hoverable" title="Define this JS object for the Closure Compiler">goog.provide('click_counter');</div>
-      <div class="hoverable" title="the JavaScript objects that this module depends on">goog.require('root');</div>
-      <div class="hoverable" title="Constructor of the module. Notice that the JsDoc describes the purpose of this module as well as the parameters. See http:// for details.">
+      <div class="hoverable" title="Defines this JavaScript object for the Closure Compiler">goog.provide('click_counter');</div>
+      <div class="hoverable" title="The JavaScript objects that this module depends on.<br>These objects are loaded before this object.">goog.require('root');</div>
+      <div class="hoverable" title="Constructor of the module.<br><br>Notice that the JsDoc describes the purpose of this module<br>as well as the parameters.<br><br>See http://code.google.com/closure/compiler/docs/js-for-compiler.html<br>for details.">
 /**
  * Displays how often the button got clicked.
  *
@@ -143,10 +144,10 @@
  * @constructor
  */
 var ClickCounter = function(container) {</div>
-      <div class="hoverable" title="This line makes this class a widget class.">
+      <div class="hoverable" title="This line makes this instance a module.">
   // Make this object a module.
   modularity.widgetize(this, container);</div>
-      <div class="hoverable" title="Stores the DOM element of the button in an instance variable. This allows to access it comfortably and performantly using a proper name.">
+      <div class="hoverable" title="Stores the DOM element of the button in an instance variable.<br>This allows to access the DOM comfortably and performantly<br>using a proper name.">
   /**
    * The display element for the number of clicks.
    * @type jQueryObject
@@ -164,7 +165,7 @@ var ClickCounter = function(container) {</div>
   this.current_clicks = 0;
       </div>
       <div>};</div>
-      <div class="hoverable" title="An event handler. Because the value of 'this' was bound using 'this.callback()', it can access properties of this module instance.">
+      <div class="hoverable" title="An event handler.<br><br>Because the value of 'this' was bound using 'this.callback()',<br>it can access properties of this module instance.">
 /**
  * Called when the button element is clicked.
  */
@@ -177,7 +178,7 @@ ClickCounter.prototype.button_clicked = function() {
   this.display.html(ClickCounter.display_html(this.current_clicks));
 };
       </div>
-      <div class="hoverable" title="A helper method for massaging data. Good candidate for unit testing.">
+      <div class="hoverable" title="A helper method for massaging data.<br><br>Good candidate for unit testing.">
 /**
  * Updates the display element with the current click count.
  * @param {number} count The number of times the button has been clicked.
@@ -191,12 +192,10 @@ ClickCounter.display_html = function(count) {
     return "You clicked this button "+this.current_clicks+" times.";
 };    
     </div>
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
-    </div>
-
   </div>
-
+  <div class="footer">
+    get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
+  </div>
   
 </body>
 </html>
