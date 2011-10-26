@@ -6,6 +6,8 @@
   <title>kevgo/modularity @ GitHub</title>
 
   <style type="text/css">
+  
+    /* Github framework */
     body {
       margin-top: 1.0em;
       font-family: Helvetica, Arial, FreeSans, san-serif;
@@ -25,10 +27,19 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+
+    /* PHILOSOPHY TABLE */
     .philosophy th { vertical-align: top; padding-right: 1ex;}
     .philosophy td { padding-bottom: 1em; }
-    .code_sample div { background: #000; color: #fff; padding: 2ex; font-family: monospace; white-space:pre }
-    .hoverable:hover { background: rgb(67, 47, 0) }
+
+    /* DEMO WIDGET */
+    .demo .container { border: 2px solid red; width: 26ex; padding: 2ex; color: red; float: right; margin-left: 2ex; }
+    .demo .button { border: 2px solid green; padding: 5px 10px; margin-right: 20px; background: white; color: green; }
+    .demo .display { border: 2px dotted blue; padding: 5px 10px; width: 10ex; color: blue; }
+
+    /* CODE SAMPLE TABLE */
+    .code_sample div { background: #f0f0f0; color: black; padding: 2ex; font-family: monospace; white-space:pre }
+    .hoverable:hover { background: #e0e0e0 }
   </style>
   <link rel="stylesheet" href="index.css" type="text/css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -122,12 +133,25 @@
     </table>
 
     <h2>Example</h2>
-    <p>A module manages all the client-side aspects of a dedicated part of a web page: 
-    DOM elements, data, events, helper methods. 
-    Modules have a container. The container is the DOM element which contains all the elements 
-    of the module.
-    </p>
-    <p>Please hover over sections of the source code to see details about it.</p>
+    <div class="demo">
+      <fieldset class="container">
+        <legend>container</legend>
+        <table>
+          <tr>
+            <td><button class="button">button</button></td>
+            <td><div class="display">display</div></td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+    <p>
+    Each module has a container. The container is the DOM element which contains all the elements 
+    of the module. The container is provided to the module when it is constructed. Identifying or creating the inner structure of the
+    container is responsibility of the module itself. </p>
+    <p>On the right is an example module. It contains a button and a div with the class "display".
+    The module's function is to simply show the number of times the button was clicked on the display element.<p>
+    <p>Below is the source code of this module. Corresponding colors are highlighted. 
+      Please hover over sections of the source code to see details about it.</p>
 
     <div class="code_sample">
       <div class="hoverable" title="Defines this JavaScript object for the Closure Compiler">goog.provide('click_counter');</div>
@@ -136,34 +160,28 @@
 /**
  * Displays how often the button got clicked.
  *
- * @param {jQueryObject} container The container element 
- * for the click counter section of the page. This div is 
- * expected to contain a DOM element with the class 'counter' 
- * to be used as the display for the count and a DOM element with
- * the class 'button' which is listened to for clicks.
+ * <span style="color:red">@param {jQueryObject} container The container element</span>
+ * <span style="color:red">for the click counter section of the page. This div is</span>
+ * <span style="color:red">expected to contain a DOM element with the class 'display'</span>
+ * <span style="color:red">to be used as the display for the count and a DOM element with</span>
+ * <span style="color:red">the class 'button' which is listened to for clicks.</span>
  * @constructor
  */
-var ClickCounter = function(container) {</div>
-      <div class="hoverable" title="This line makes this instance a module.">
-  // Make this object a module.
-  modularity.widgetize(this, container);</div>
-      <div class="hoverable" title="Stores the DOM element of the button in an instance variable.<br>This allows to access the DOM comfortably and performantly<br>using a proper name.">
-  /**
-   * The display element for the number of clicks.
-   * @type jQueryObject
-   */
-  this.display = container.find('.display');
-      </div>
-      <div class="hoverable" title="Attaching an event handler to an DOM element.">
-  // Listen to clicks on the button.
-  container.find('.button').click(this.callback(this.button_clicked));</div>
-      <div class="hoverable" title="Defines an data instance variable.">
-  /**
+var ClickCounter = function(<span style="color:red">container</span>) {</div>
+      <div class="hoverable" title="This line makes this instance a module.">  // Make this object a module.
+  modularity.widgetize(this, <span style="color: red">container</span>);</div>
+      <div class="hoverable" title="Stores the DOM element of the button in an instance variable.<br>This allows to access the DOM comfortably and performantly<br>using a proper name.">  <span style="color: blue">/**</span>
+<span style="color: blue">   * The display element for the number of clicks.</span>
+<span style="color: blue">   * @type jQueryObject</span>
+<span style="color: blue">   */</span>
+<span style="color: blue">  this.display = <span style="color: red">container</span>.find('.display');</span></div>
+      <div class="hoverable" title="Attaching an event handler to an DOM element."><span style="color: green">  // Listen to clicks on the button.</span>
+<span style="color: green">  <span style="color: red">container</span>.find('.button').click(this.callback(this.button_clicked));</span></div>
+      <div class="hoverable" title="Defines an data instance variable.">  /**
    * How many times has the button been clicked already?
    * @type {number}
    */
-  this.current_clicks = 0;
-      </div>
+  this.current_clicks = 0;</div>
       <div>};</div>
       <div class="hoverable" title="An event handler.<br><br>Because the value of 'this' was bound using 'this.callback()',<br>it can access properties of this module instance.">
 /**
