@@ -41,7 +41,20 @@ ClickCounter.prototype.button_clicked = function() {
 
   // Count this click.
   this.current_clicks++;
-  
+
   // Update the display.
-  this.display.html("You clicked this button "+this.current_clicks+" times.");
+  this.display.html(ClickCounter.display_html(this.current_clicks));
 };
+      
+
+/**
+ * Updates the display element with the current click count.
+ * @param {number} count The number of times the button has been clicked.
+ */
+ClickCounter.display_html = function(count) {
+  if (count === 1) {
+    return "Please click again";
+  } else {
+    return count+" clicks!";
+  }
+};    

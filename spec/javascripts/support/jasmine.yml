@@ -11,9 +11,13 @@
 #   - dist/**/*.js
 #
 src_files:
-  - uncompiled/jquery-1.5.2.js
-  - modularity.js
+  - javascripts/uncompiled/jquery-1.5.2.js
+  - javascripts/modularity.js
   - test_helpers.js
+  - demos/demo_1/src/click_counter.js
+  - demos/demo_2/src/button.js
+  - demos/demo_2/src/display.js
+  - demos/demo_2/src/click_counter_2.js
 
 
 # stylesheets
@@ -65,7 +69,7 @@ spec_files:
 #
 # src_dir: public
 #
-src_dir: javascripts
+src_dir: 
 
 # spec_dir
 #
