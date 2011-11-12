@@ -1,17 +1,28 @@
-<!-- This file demonstrates how Modularity is used uncompressed in development. -->
 <html>
 <head>
-  <title>Kevin demo</title>
-  <script type="text/javascript" src="../../javascripts/uncompiled/jquery-1.5.2.js"></script>
-  <script type="text/javascript" src="../../javascripts/modularity.js"></script>
+
+  <!-- Load jQuery from Google's CDN. -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+  <!-- Load the Modularity framework. -->
+  <script type="text/javascript" src="../../../modularity.js"></script>
+
+  <!-- Load the ClickCounter module. -->
   <script type="text/javascript" src="click_counter.js"></script>
+
+  <!-- Load the JavaScript file for this page. -->
   <script type="text/javascript" src="page.js"></script>
+
 </head>
 <body>
-  <h1>Click counter demo</h1>
+  <h1>Modularity demo: Basic Module in Development mode (uncompressed JavaScript)</h1>
+
+  <!-- This is the container for the ClickCounter module, 
+       containing the button and display elements. -->
   <div class="click_counter_container">
     <button class="button">click me</button>
     <div class="display"></div>
   </div>
+
 </body>
 </html>

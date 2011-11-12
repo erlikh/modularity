@@ -9,12 +9,11 @@ goog.require('modularity');
                                    This div is expected to contain a DOM element with the class 'counter' 
                                    to be used as the display for the count and a DOM element with the class 'button'
                                    which is listened to for clicks.
- * @param {number} max_clicks The maximal number of clicks that are allowed.
  * @constructor
  */
-var ClickCounter = function(container, max_clicks) {
+var ClickCounter = function(container) {
   
-  // Make this class a widget class.
+  // Make this class a module.
   modularity.widgetize(this, container);
   
   /**
