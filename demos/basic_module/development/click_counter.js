@@ -52,7 +52,7 @@ ClickCounter.prototype.button_clicked = function() {
  */
 ClickCounter.display_html = function(count) {
   if (count === 1) {
-    return "Please click again";
+    return "Click again!";
   } else {
     return count+" clicks!";
   }

@@ -45,7 +45,7 @@ describe('click_counter', function() {
   
   describe('display_html', function() {
     it('shows a special text for the first click', function() {
-      expect(ClickCounter.display_html(1)).toEqual('Please click again');
+      expect(ClickCounter.display_html(1)).toEqual('Click again!');
     });
     it('shows the number of clicks for subsequent clicks', function() {
       expect(ClickCounter.display_html(2)).toEqual('2 clicks!');
