@@ -88,7 +88,7 @@
         </td>
       </tr>
       <tr>
-        <th>pragmatism</th>
+        <th>pragmatic</th>
         <td>
           Perfection is achieved when there is nothing left to take away. 
           Modularity favors simple, clean, and intuitive best practices that work 
@@ -96,7 +96,7 @@
         </td>
       </tr>
       <tr>
-        <th>interoperability</th>
+        <th>interoperable</th>
         <td>
           The JavaScript based on Modularity has no dependencies and can be combined with other 
           JavaScript libraries and backend technologies.
@@ -443,28 +443,27 @@ Display.prototype.display_html = function(html) {
   
     <h2>Testing</h2>
     <p>
-      Because widgets cleanly represent code as dedicated methods, they can be tested in isolation, 
-      for example using the powerful <a href="http://pivotal.github.com/jasmine">Jasmine testing framework</a>.
-      DOM interactions can be tested by providing a simulated module container in the test fixtures.
-
-      Modularity allows you to break up your JavaScript code into cleanly separated and well structured classes and files,
-      similar to how it is done in other object-oriented languages and environments.
-      
-      Modularity as a pure JavaScript solution can be tested with any testing tool for JavaScript.
-      This project comes with example tests written in <a href="">Jasmine</a>, one of the most sophisticated
-      behavior-driven testing frameworks.
+      Because Modularity organizes JavaScript code in well structured files, classes, and methods,
+      it can be tested in the same powerful ways know from other object-oriented environments.
     </p>
     <p>
-      To run the tests for the demo code, you need to have <a href="">ruby</a>, <a href="">rake</a>, and the Jasmine gem installed.
-      Then, simply run <pre>rake jasmine</pre>
+      To run the tests for the demo code, you need to have <a href="">ruby</a> and <a href="">bundler</a> installed.
+      Then, simply run <pre>bundle install</pre> to set up your environment once, and then <pre>bundle exec rake jasmine</pre> to run the tests.
     </p>
     <p>
       Feel free to adapt the test setup to your particular environment, setup, and deployment workflow.
     </p>
 
     <h2>Compiling</h2>
-    Modularity code can be compiled by Google's sophisticated Closure Compiler in the advanced settings.
+    
+    <p>
+    Modularity is one of the rare frameworks that can be compiled by Google's sophisticated Closure Compiler in the advanced setting.
     To compile the demo code, please run <pre>rake compile_demo</pre>
+    It creates files like <i>demos/demo_1/output/compressed.js</i>.
+    Again, this is just a reference to create your own compilation job that fits your particular backend technology.
+    </p>
+    
+    <p>Happy coding!  :)</p>
     
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
