@@ -49,12 +49,11 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/kevgo/modularity">modularity</a>
-      <span class="small">by <a href="http://github.com/kevgo">kevgo</a></span></h1>
+    <h1><a href="http://github.com/kevgo/modularity">modularity</a></h1>
 
     <div class="description">
       <p>
-        A pattern and framework for structured, pragmatic, object-oriented JavaScript coding
+        A pattern and framework for lightweight object-oriented JavaScript
       that allows to compose functionally rich web pages in a clean and testable way 
       out of well structured and reusable components.
       </p>
@@ -70,7 +69,7 @@
     <h2>Philosophy and Design Principles</h2>
     <p>
       JavaScript has been supporting object-oriented principles for a while. 
-      However, too often JavaScript code isn't as object-oriented, testable and reusable as it could be.
+      However, too often JavaScript code isn't as object-oriented, testable and reusable as it could and should be.
       Modularity aims to make it easy to write complex web user interfaces 
       in simple, clean, and intuitive object-oriented JavaScript. 
       Some of modularity's principles are:
@@ -88,8 +87,8 @@
       <tr>
         <th>use the best technologies</th>
         <td>
-          Modularity combines useful patterns from Google's over-engineered Closure library
-          with the strongest JavaScript compiler and the widely popular jQuery ecosystem.
+          Modularity combines useful patterns from Google's great but over-engineered Closure library
+          with the strongest JavaScript compiler that exists and the most popular JavaScript ecosystem (jQuery).
         </td>
       </tr>
       <tr>
@@ -110,7 +109,8 @@
         <th>interoperable</th>
         <td>
           The JavaScript based on Modularity has no dependencies and can be combined with other 
-          JavaScript libraries and backend technologies.
+          JavaScript libraries and backend technologies. It has been used successfully in enterprise-level
+          Ruby on Rails, PHP, and Java applications.
         </td>
       </tr>
     </table>
@@ -454,47 +454,63 @@ Display.prototype.display_html = function(html) {
     <p>
       You can download this project in either
       <a href="http://github.com/kevgo/modularity/zipball/master">zip</a> or
-      <a href="http://github.com/kevgo/modularity/tarball/master">tar</a> formats.
-      <br>
-      You can also clone the project with <a href="http://git-scm.com">Git</a>
+      <a href="http://github.com/kevgo/modularity/tarball/master">tar</a> formats,
+      or even better clone the project with <a href="http://git-scm.com">Git</a>
       by running:
       <pre>$ git clone git://github.com/kevgo/modularity</pre>
     </p>
     <p>
       The folder <a href="http://github.com/kevgo/modularity/tree/master/demos" target="_blank">demos</a>
-      contains example pages that use modularity. Please refer to them to see them in action.
+      contains fully functional examples of simple modules in both development and production setup. 
     </p>
-      
+
+    <h3>Development mode</h3>
+    <p>
+      The recommended setup while developing your application is to use the raw uncompressed source code files
+      for your modules directly in your pages. 
+      This allows to quickly iterate through changes without having to recompile after each change, 
+      and to debug the JavaScript.
+    </p>
+    <p>
+      The basic setup for the development mode includes <a href="http://jquery.com">jQuery</a>, 
+      the <a href="https://github.com/kevgo/modularity/blob/master/modularity.js">Modularity framework file</a>,
+      and the files defining your modules. 
+    </p>
   
-    <h2>Testing</h2>
+    <h3>Testing</h3>
     <p>
       Because Modularity organizes JavaScript code in well structured files, classes, and methods,
       it can be tested in the same powerful ways know from other object-oriented environments.
     </p>
     <p>
       To run the tests for the demo code, you need to have <a href="http://www.ruby-lang.org" target="_blank">Ruby</a> and <a href="http://gembundler.com" target="_blank">Bundler</a> installed.
-      Then, simply run <pre>bundle install</pre> to set up your environment once, and then <pre>bundle exec rake jasmine</pre> to run the tests.
+      Run <pre>bundle install</pre> to set up your environment once, and then <pre>bundle exec rake jasmine</pre> to run the tests.
     </p>
     <p>
-      Feel free to adapt the test setup to your particular environment, setup, and deployment workflow.
+      The provided setup is only a demonstration, and should be adapted to your particular environment and deployment workflow.
     </p>
 
-    <h2>Compiling</h2>
-    
+    <h3>Production mode</h3>
     <p>
-    Modularity is one of the rare frameworks that can be compiled by Google's sophisticated Closure Compiler in the advanced setting.
+    Once everything works, all the different JavaScript files can be combined into a single highly compressed
+    file. Besides <a href="http://jquery.com">jQuery</a>, this is the only JS file that needs to be loaded 
+    onto a page in production mode.
+    Modularity is one of the rare frameworks that can be compiled by Google's sophisticated Closure Compiler in the advanced mode.
+    </p>
+    <p>
     To compile the demo code, please run <pre>rake compile_demo</pre>
-    It creates files like <i>demos/demo_1/output/compressed.js</i>.
-    Again, this is just a reference to create your own compilation job that fits your particular backend technology.
+    It takes the JS files from folders like <a href="https://github.com/kevgo/modularity/tree/master/demos/basic_module/development" target="_blank">demos/basic_module/development</a> 
+    and creates a compressed file like <a href="https://github.com/kevgo/modularity/blob/master/demos/basic_module/production/compressed.js" target="_blank">demos/basic_module/production/compressed.js</a>.
+    Again, this is just a reference to create your own compilation job that fits your particular deployment process.
     </p>
 
-    <h2>Development</h2>
+    <p>Happy coding! &nbsp;:)</p>
+    
+    <h2>Contribute</h2>
     If you find a bug, have a question, or a better idea, please open an issue on the 
     <a href="https://github.com/kevgo/modularity/issues">Modularity issue tracker</a>. 
     Or, clone the repository, make your changes, and submit a pull request.
           
-    <p>Happy coding! &nbsp;:)</p>
-    
     
     <h2>License</h2>
     <p>
