@@ -18,29 +18,19 @@ var ClickCounter = function(container, max_clicks) {
   modularity.widgetize(this, container);
   
   /**
-   * The element to click on.
+   * The display element for the number of clicks.
    * @type jQueryObject
    */
-  this.button = container.find('.button');
-  this.button.click(this.callback(this.button_clicked));
+  this.display = container.find('.display');
 
+  // Listen to clicks on the button.
+  container.find('.button').click(this.callback(this.button_clicked));
+  
   /**
    * How many times has the button been clicked already?
    * @type {number}
    */
   this.current_clicks = 0;
-
-  /**
-   * The display element for the number of clicks.
-   * @type jQueryObject
-   */
-  this.display = container.find('.display');
-  
-  /**
-   * The maximal number of clicks that are allowed.
-   * @type number
-   */
-  this.max_clicks = max_clicks;  
 };
 
 
@@ -52,19 +42,6 @@ ClickCounter.prototype.button_clicked = function() {
   // Count this click.
   this.current_clicks++;
   
-  // Handle situation where there is only one click left.
-  if (this.current_clicks === (this.max_clicks-1)) {
-    this.display.html('One click left, make it count!');
-    return;
-  }
-  
-  // Handle situation when clicks are exceeded.
-  if (this.current_clicks === this.max_clicks) {
-    this.display.html("Sorry, this button cannot be clicked on more than "+this.max_clicks+" times.");
-    this.button.attr('disabled', 'disabled');
-    return;
-  }
-  
-  // Handle situation where there are clicks left.
+  // Update the display.
   this.display.html("You clicked this button "+this.current_clicks+" times.");
 };

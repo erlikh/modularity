@@ -1,17 +1,16 @@
 /*
- * 
- *
+ * The Modularity framework. 
+ * Please see https://github.com/kevgo/modularity for more information.
  */
-
-
+ 
 
 // Google Closure compiler stuff.
 var goog = goog || {};
 goog.provide = function() {};
 goog.require = function() {};
 
-// The root namespace.
-goog.provide('root');
+// Define the root namespace for the Closure compiler.
+goog.provide('modularity');
 
 
 /**
