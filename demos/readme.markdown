@@ -1,3 +1,4 @@
+<script type="text/javascript">alert('foo');</script>
 <script type="text/javascript" src="demo_1/click_counter_1.js"></script>
  
 Demo files to play with Modularity.
