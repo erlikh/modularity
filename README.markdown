@@ -1,1 +1,1 @@
-Documentation: http://github.com/kevgo/modularity/wiki
+Documentation: http://kevgo.github.com/modularity
