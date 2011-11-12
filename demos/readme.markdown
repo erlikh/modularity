@@ -1,3 +1,5 @@
+<script type="text/javascript" src="demo_1/click_counter_1.js"></script>
+ 
 Demo files to play with Modularity.
 
 The folder demo_1 contains the basic module example from http://kevgo.github.com/modularity.
