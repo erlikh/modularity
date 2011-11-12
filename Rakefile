@@ -16,14 +16,14 @@ end
 def compile_demo root, options
   print "Compiling #{root} ... " ; STDOUT.flush
   framework_files = ['javascripts/modularity.js']
-  page_files = `find #{root} -type f -name "*.js"`.split "\n"
+  page_files = `find #{root}/src -type f -name "*.js"`.split "\n"
   externs_files = `find javascripts/externs -type f -name "*.externs.js"`.split "\n"  
 
   options = {
     :compilation_level => 'ADVANCED_OPTIMIZATIONS',
     :externs => externs_files,
     :js => framework_files + page_files,
-    :js_output_file => "#{root}/compressed.js",
+    :js_output_file => "#{root}/output/compressed.js",
     :jscomp_warning => 'strictModuleDepCheck',
     :jscomp_warning => 'missingProperties',
     :jscomp_warning => 'unknownDefines',
