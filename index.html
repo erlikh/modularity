@@ -42,19 +42,8 @@
     </div>
 
     <h2>Authors</h2>
-<p>Kevin Goslar (kevin.goslar@gmail.com)
+<p>Kevin Goslar &lt;<a href="mailto:kevin.goslar@gmail.com">kevin.goslar@gmail.com</a>&gt;
 <br/>      </p>
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/kevgo/modularity/zipball/master">zip</a> or
-      <a href="http://github.com/kevgo/modularity/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/kevgo/modularity</pre>
-    </p>
 
     <h2>Philosophy and Design Principles</h2>
     <p>
@@ -104,7 +93,7 @@
       </tr>
     </table>
 
-    <h2>Modules</h2>
+    <h3>Modules</h3>
     <p>
       In Modularity, web pages are broken up into functionally and spatially distinct sections. 
       Examples are the page header section (which itself can contain other sections like a log-in section), 
@@ -128,8 +117,6 @@
       Everything the module does must happen inside this container.
       The module is responsible for managing the inner DOM-structure of the container.
     </p>
-
-    <h3>Example for a basic module</h3>
 
     <div class="demo click_counter_demo_1">
       <div class="background">
@@ -440,6 +427,22 @@ Display.prototype.display_html = function(html) {
           }
         };</div>
     </div>
+
+    <h2>Download, install, and use</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/kevgo/modularity/zipball/master">zip</a> or
+      <a href="http://github.com/kevgo/modularity/tarball/master">tar</a> formats.
+      <br>
+      You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/kevgo/modularity</pre>
+    </p>
+    <p>
+      The folder <a href="http://github.com/kevgo/modularity/tree/master/demos" target="_blank">demos</a>
+      contains example pages that use modularity. Please refer to them to see them in action.
+    </p>
+      
   
     <h2>Testing</h2>
     <p>
@@ -447,7 +450,7 @@ Display.prototype.display_html = function(html) {
       it can be tested in the same powerful ways know from other object-oriented environments.
     </p>
     <p>
-      To run the tests for the demo code, you need to have <a href="">ruby</a> and <a href="">bundler</a> installed.
+      To run the tests for the demo code, you need to have <a href="http://www.ruby-lang.org" target="_blank">Ruby</a> and <a href="http://gembundler.com" target="_blank">Bundler</a> installed.
       Then, simply run <pre>bundle install</pre> to set up your environment once, and then <pre>bundle exec rake jasmine</pre> to run the tests.
     </p>
     <p>
@@ -462,8 +465,22 @@ Display.prototype.display_html = function(html) {
     It creates files like <i>demos/demo_1/output/compressed.js</i>.
     Again, this is just a reference to create your own compilation job that fits your particular backend technology.
     </p>
+
+    <h2>Development</h2>
+    If you find a bug, have a question, or a better idea, please open an issue on the 
+    <a href="https://github.com/kevgo/modularity/issues">Modularity issue tracker</a>. 
+    Or, clone the repository, make your changes, and submit a pull request.
+          
+    <p>Happy coding! &nbsp;:)</p>
     
-    <p>Happy coding!  :)</p>
+    
+    <h2>License</h2>
+    <p>
+      Copyright &copy; Kevin Goslar &lt;<a href="mailto:kevin.goslar@gmail.com">kevin.goslar@gmail.com</a>&gt;
+    </p>
+    <p>
+      Modularity is distributed under the MIT license. See <a href="https://github.com/kevgo/modularity/blob/master/license.txt" target="_blank">license.txt</a> for details.
+    </p>
     
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/kevgo/modularity">kevgo/modularity</a>
