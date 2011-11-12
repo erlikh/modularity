@@ -1,5 +1,5 @@
 goog.provide('click_counter');
-goog.require('root');
+goog.require('modularity');
 
 
 /**

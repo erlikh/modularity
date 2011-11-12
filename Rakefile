@@ -1,18 +1,29 @@
 require 'closure-compiler'
 
-desc "Compiles the demo JS files."
+desc "Compiles the JS files for demo 1."
 task :compile_demo, [:options] do |t, args|
-  puts "Compiling demo files using advanced compression\n"
+  puts "Compiling demo files using advanced compression.\n\n"
 
-  framework_files = `find javascripts -type f -name "*.js" | grep -v "/uncompiled/" | grep -v "externs.js"`.split "\n"
-  page_files = `find demo_1 -type f -name "*.js"`.split "\n"
+  # Find the different demos.
+  demo_folders = `find demos -type d -name "demo_*"`.split "\n"
+  demo_folders.each do |demo_folder|
+    compile_demo demo_folder, args.options
+  end
+  puts "\nAll done.\n"
+end
+
+
+def compile_demo root, options
+  print "Compiling #{root} ... " ; STDOUT.flush
+  framework_files = ['javascripts/modularity.js']
+  page_files = `find #{root} -type f -name "*.js"`.split "\n"
   externs_files = `find javascripts/externs -type f -name "*.externs.js"`.split "\n"  
 
   options = {
     :compilation_level => 'ADVANCED_OPTIMIZATIONS',
     :externs => externs_files,
     :js => framework_files + page_files,
-    :js_output_file => 'demo_1/compressed.js',
+    :js_output_file => "#{root}/compressed.js",
     :jscomp_warning => 'strictModuleDepCheck',
     :jscomp_warning => 'missingProperties',
     :jscomp_warning => 'unknownDefines',
@@ -20,7 +31,7 @@ task :compile_demo, [:options] do |t, args|
     :manage_closure_dependencies => 'true',
     :warning_level => 'VERBOSE',
   }
-  if args.options == 'pp'
+  if options == 'pp'
     options[:formatting] = ['PRETTY_PRINT', 'PRINT_INPUT_DELIMITER']
   end
   
