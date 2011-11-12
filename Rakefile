@@ -5,8 +5,9 @@ task :compile_demo, [:options] do |t, args|
   puts "Compiling demo files using advanced compression.\n\n"
 
   # Find the different demos.
-  demo_folders = `find demos -type d -name "demo_*"`.split "\n"
+  demo_folders = `find demos -type d -maxdepth 1`.split "\n"
   demo_folders.each do |demo_folder|
+    next if demo_folder == 'demos'
     compile_demo demo_folder, args.options
   end
   puts "\nAll done.\n"
@@ -15,15 +16,15 @@ end
 
 def compile_demo root, options
   print "Compiling #{root} ... " ; STDOUT.flush
-  framework_files = ['javascripts/modularity.js']
-  page_files = `find #{root}/src -type f -name "*.js"`.split "\n"
-  externs_files = `find javascripts/externs -type f -name "*.externs.js"`.split "\n"  
+  framework_files = ['modularity.js']
+  page_files = `find #{root}/development -type f -name "*.js"`.split "\n"
+  externs_files = `find compilation-tools/externs -type f -name "*.externs.js"`.split "\n"  
 
   options = {
     :compilation_level => 'ADVANCED_OPTIMIZATIONS',
     :externs => externs_files,
     :js => framework_files + page_files,
-    :js_output_file => "#{root}/output/compressed.js",
+    :js_output_file => "#{root}/production/compressed.js",
     :jscomp_warning => 'strictModuleDepCheck',
     :jscomp_warning => 'missingProperties',
     :jscomp_warning => 'unknownDefines',
