@@ -1,10 +1,11 @@
 Documentation: http://kevgo.github.com/modularity
 
-The folder "demos" contains fully functional example modules to play with. They are described in http://kevgo.github.com/modularity.
+The framework is in the file "modularity.js", unit tests are in the folder "spec".
 
-The folder "javascripts" contains the Modularity framework as well as utility files for the Closure compiler.
+The folder "demos" contains fully functional example modules to play with. 
+They are described in http://kevgo.github.com/modularity.
 
-The file "Rakefile" contains sample jobs to run the JS compiler. In this case, it just compiles the demos.
-Use this as a starting point for your own compiler jobs.
+The file "Rakefile" contains sample jobs to compress the demo files.
+Use it as a starting point for your own compiler jobs. 
+The folder "compilation-tools" contains utility files for the Closure compiler.
 
-The folder "spec" contains unit tests for the Modularity framework.
