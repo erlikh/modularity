@@ -70,9 +70,11 @@
     <p>
       JavaScript has been supporting object-oriented principles for a while. 
       However, too often JavaScript code isn't as object-oriented, testable and reusable as it could and should be.
-      Modularity aims to make it easy to write complex web user interfaces 
+    </p>
+    <p>
+      <i>Modularity</i> aims to make it easy to write complex web user interfaces 
       in simple, clean, and intuitive object-oriented JavaScript. 
-      Some of modularity's principles are:
+      It is based on the following principles:
     </p>
       
     <table class="philosophy">
@@ -88,7 +90,7 @@
         <th>use the best technologies</th>
         <td>
           Modularity combines useful patterns from Google's great but over-engineered Closure library
-          with the strongest JavaScript compiler that exists and the most popular JavaScript ecosystem (jQuery).
+          with the strongest JavaScript compiler in existence and the most popular JavaScript ecosystem (jQuery).
         </td>
       </tr>
       <tr>
@@ -115,9 +117,9 @@
       </tr>
     </table>
 
-    <h3>Modules</h3>
+    <h2>Concepts</h2>
     <p>
-      In Modularity, web pages are broken up into functionally and spatially distinct sections. 
+      In Modularity, web pages are broken up into functionally and spatially distinct <b>sections</b>. 
       Examples are the page header section (which itself can contain other sections like a log-in section), 
       a menu section on the left side of the page, 
       or a section that displays a photo slideshow.
@@ -125,17 +127,18 @@
     <p>
       Each section typically encapsulates everything related to it: Content in the form of DOM elements, 
       designs in the form of CSS files, and logic in the form of JavaScript files.
-      Modularity focuses on the JavaScript parts.
+      Modularity in its current form focuses on the JavaScript parts.
     </p>
+    <h3>Modules</h3>
     <p>
-      Each section is managed by a JavaScript object (called <i>module</i>).
+      Each section is managed by a JavaScript object (called <b>module</b>).
       Modules are native JavaScript objects that are specialized for doing what most JavaScript running in browsers does:
       managing a UI consisting of DOM elements, reacting to events that happen within that section, 
       representing application logic specific to that section, and providing high-level APIs for others to interact with 
       the section.
     </p>
     <p>
-      Each module has a <i>container</i>. The container is the outermost DOM element of a section. 
+      Each module has a <b>container</b>. The container is the outermost DOM element of a section. 
       Everything the module does must happen inside this container.
       The module is responsible for managing the inner DOM-structure of the container.
     </p>
@@ -155,15 +158,16 @@
     </div>
 
     <p>
-      On the right is a fully functional example module with it's DOM elements highlighted.
-      It' called <i>ClickCounter</i> and displays on it's embedded display element 
-      how often the embedded button was clicked.
+      On the right is a fully functional example module.
+      It's called <i>ClickCounter</i> and displays on it's embedded display element 
+      how often the embedded button has been clicked.
       Please try it out to see it in action.<p>
-    <p>To create an instance of the module, all you have to do is <pre>
+    <p>This is how you create an instance of this module: <pre>
 new ClickCounter($('.click_counter_container'));
 </pre>
-    <p>Below is the source code of this module. Elements are highlighted in a color corresponding to the demo. 
-      Please hover the mouse over the different sections of the source code to see additional details about it.
+    <p>Below is the source code for this module. The highlight colors correspond to 
+      the demo module. 
+      Please hover the mouse over the different sections of the source code to see additional details.
       </p>
 
     <div class="code_sample">
@@ -211,7 +215,17 @@ var ClickCounter = function(<span style="color:red">container</span>) {</div>
    */
   this.current_clicks = 0;</div>
       <div>};</div>
-      <div class="hoverable" title="An event handler.<br><br>Because the value of 'this' was bound using 'this.callback()',<br>it can access properties of this module instance.">
+      <div class="hoverable" title="An event handler.<br><br>
+                                    Event handlers for Modularity events<br>
+                                    look exactly the same as<br>
+                                    event handlers for jQuery events.<br>
+                                    As a matter of fact, Modularity events<br>
+                                    are jQuery events,<br>
+                                    fired by the module's container!<br><br>
+                                    Because the value of 'this' was bound<br>
+                                    using 'this.callback()',<br>
+                                    it can access properties<br>
+                                    of this module instance.">
 <span class="green">/**
  * Called when the button element is clicked.
  */
@@ -263,14 +277,13 @@ ClickCounter.display_html = function(count) {
       </div>
       More often than not, a page will contain multiple modules, which need to interact with each other.
       An example is when the button and the display element are developed by different developers or teams. 
-      In such scenarios, it is better to create separate modules for the button and the display elements,
-      and create a <i>composite module</i> that orchestrates the interaction of the two modules.
+      In such scenarios, it is better to create separate modules for the button and the display elements, 
+      and have them interact with each other to make the click counting happen. 
     </p>
     <p>
-      This approach also has the benefit that the button and the display element become more generic and can be
-      reused in other contexts. More details about that below.
-      In addition, the different modules don't have to be located in the same container,
-      they can be positioned anywhere on the page. 
+      This approach has the advantage that we need only generic button and display modules,
+      which don't have to be specific to this use case at all and can be used in many other contexts.
+      They also don't have to be located in the same container element.
     </p>
     
     <p>Creating such a setup is simple and straightforward as well:
@@ -288,9 +301,7 @@ new ClickCounter2(button, display);</pre>
 goog.require('modularity');</span></div>
       <div class="hoverable" title="Constructor for the Button module.">
 <span class="green">/**
- * A generic button. 
- * 
- * Fires 'click' events.
+ * A generic button. Fires 'click' events when clicked.
  *
  * @param {jQueryObject} container The container element for this button.
  * @constructor
@@ -305,7 +316,8 @@ var Button = function(container) {
 };</span></div>
       <div class="hoverable" title="Declaring the events that can be fired as an enum<br>
                                     has the advantage that they are all listed in one place,<br>
-                                    and can be accessed using the enum name. This catches typos.">
+                                    and can be accessed using the enum name.<br>
+                                    This catches typos.">
 <span class="green">/**
  * The different events that this button can fire.
  * @enum {string}
@@ -314,7 +326,8 @@ Button.events = {
   CLICKED: 'Button_clicked'
 };</span></div>
       <div class="hoverable" title="When the button is clicked,<br>
-                                    this module fires the Button.events.CLICKED event.">
+                                    this module fires the<br>
+                                    Button.events.CLICKED event.">
 <span class="green">/**
  * Called when this button is clicked.
  */
@@ -336,10 +349,9 @@ goog.require('modularity');</span></div>
       <div class="hoverable" title="Constructor for the Display module.<br><br>
                                     The container is stored by <i>modularity.widgetize</i><br>
                                     in the field <i>this.container</i>,<br>
-                                    so there is nothing to do here.">
+                                    so there is nothing else to do here.">
 <span class="blue">/**
  * A generic display element.
- *
  * Displays any given HTML snippet inside its container.
  *
  * @param {jQueryObject} container The container for this display element.
@@ -362,7 +374,7 @@ Display.prototype.display_html = function(html) {
     </div>
     
     <p>
-      So far easy enough. Let's now look at the module that brings it all together. 
+      Now let's look at the module that brings it all together. 
       The <i>ClickCounter2</i> module is a <i>composite</i> module, which means a module
       that provides higher-level functionality by combining a number of other modules.
     </p>
@@ -423,12 +435,7 @@ Display.prototype.display_html = function(html) {
           button.bind_event(Button.events.CLICKED, 
                             this.callback(this.on_button_clicked));</div>
       <div>        };</div>
-      <div class="hoverable" title="Event handlers for Modularity events<br>
-                                    look exactly the same as<br>
-                                    event handlers for jQuery events.<br><br>
-                                    As a matter of fact, Modularity events<br>
-                                    are jQuery events,<br>
-                                    fired by the module's container!">
+      <div>
         /**
          * Called when the button was clicked.
          */
@@ -449,6 +456,13 @@ Display.prototype.display_html = function(html) {
           }
         };</div>
     </div>
+    <p>
+      This example demonstrates two types of module interaction. The ClickCounter2 module listens to events
+      from its button module. This is the decoupled, asynchronous form of module interaction. 
+      It then calls a method on the display module. This is the tightly coupled, synchronous form of module
+      interaction.
+      Both modes of interaction make sense in different situations.
+    </p>      
 
     <h2>Download, install, and use</h2>
     <p>
@@ -461,7 +475,8 @@ Display.prototype.display_html = function(html) {
     </p>
     <p>
       The folder <a href="http://github.com/kevgo/modularity/tree/master/demos" target="_blank">demos</a>
-      contains fully functional examples of simple modules in both development and production setup. 
+      contains fully functional examples of both <i>ClickCounter</i> variations discussed here, 
+      in the development as well as production setup. 
     </p>
 
     <h3>Development mode</h3>
